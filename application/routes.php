@@ -43,8 +43,12 @@ Route::get("/look/{flag}", function (Request &$request, Response &$response, Gen
     //generate the response
 	$result = new SerializableCollection([
 		"name" 		=> $arguments['flag'],
-		"status" 	=> "set"
+		"status" 	=> "unknown"
 		]);
+	
+	$flags = json_decode(file_get_contents("flags.json"));
+	$result = (array_key_exists($arguments['flag'], flags)? 
+		"".$flags[$arguments['flag']] : "unknown";
 	
 	//send the response to the client
     $response->setSerializedBody($result);
