@@ -1,0 +1,278 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "cf2015e66b9b476fb605c8d4540a52d9",
+    "content-hash": "35720ca3f8a8c058b04f0a093728ce0b",
+    "packages": [
+        {
+            "name": "graylog2/gelf-php",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bzikarsky/gelf-php.git",
+                "reference": "bc1175a5b40f585e69a017647286d84211e82544"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bzikarsky/gelf-php/zipball/bc1175a5b40f585e69a017647286d84211e82544",
+                "reference": "bc1175a5b40f585e69a017647286d84211e82544",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "psr/log": "~1.0"
+            },
+            "provide": {
+                "psr/log-implementation": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.3",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Gelf\\": "src/Gelf"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Zikarsky",
+                    "email": "benjamin@zikarsky.de"
+                },
+                {
+                    "name": "gelf-php contributors",
+                    "homepage": "https://github.com/bzikarsky/gelf-php/contributors"
+                }
+            ],
+            "description": "A php implementation to send log-messages to a GELF compatible backend like Graylog2.",
+            "time": "2016-06-02 06:04:56"
+        },
+        {
+            "name": "neroreflex/gishiki",
+            "version": "dev-development",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NeroReflex/Gishiki.git",
+                "reference": "33a18b2f2a72c3f2703d4a2caa0b48c39572fe84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/NeroReflex/Gishiki/zipball/33a18b2f2a72c3f2703d4a2caa0b48c39572fe84",
+                "reference": "33a18b2f2a72c3f2703d4a2caa0b48c39572fe84",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-hash": "*",
+                "ext-libxml": "*",
+                "ext-openssl": "*",
+                "ext-reflection": "*",
+                "ext-simplexml": "*",
+                "graylog2/gelf-php": "~1.2",
+                "php": ">=5.4.0",
+                "psr/http-message": "^1.0",
+                "psr/log": "^1.0.0",
+                "symfony/yaml": "v2.8.6"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0.0",
+                "psr/log-implementation": "1.0.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "ext-mbstring": "*",
+                "phpunit/phpunit": ">=4.8",
+                "squizlabs/php_codesniffer": "^2.5"
+            },
+            "suggest": {
+                "ext-mongo": "For MongoDB databases",
+                "ext-pdo": "For using any SQL database",
+                "ext-pdo_dblib": "For MSSQL or Sybase databases on Linux/UNIX platform",
+                "ext-pdo_mysql": "For MySQL or MariaDB databases",
+                "ext-pdo_oci": "For Oracle databases",
+                "ext-pdo_pqsql": "For PostgreSQL databases",
+                "ext-pdo_sqlite": "For SQLite databases",
+                "ext-pdo_sqlsrv": "For MSSQL databases on Windows platform",
+                "ext-redis": "Enable caching using redis"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gishiki\\": "Gishiki/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Denis Benato",
+                    "email": "benato.denis96@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Gishiki is a modern, fast and secure MVC framework perfect when creating a website or a web service.",
+            "time": "2016-07-14 17:20:13"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2015-05-04 20:22:00"
+        },
+        {
+            "name": "psr/log",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Psr\\Log\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2012-12-21 11:40:51"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v2.8.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "e4fbcc65f90909c999ac3b4dfa699ee6563a9940"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/e4fbcc65f90909c999ac3b4dfa699ee6563a9940",
+                "reference": "e4fbcc65f90909c999ac3b4dfa699ee6563a9940",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-03-29 19:00:15"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "neroreflex/gishiki": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
