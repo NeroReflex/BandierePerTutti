@@ -20,7 +20,7 @@ Route::get("/set/{flag}", function (Request &$request, Response &$response, Gene
 	
 	//send the response to the client
     $this->Response->setSerializedBody($result);
-}
+});
 
 Route::get("/clear/{flag}", function (Request &$request, Response &$response, GenericCollection &$arguments) {
     //generate the response
@@ -31,7 +31,7 @@ Route::get("/clear/{flag}", function (Request &$request, Response &$response, Ge
 	
 	//send the response to the client
     $this->Response->setSerializedBody($result);
-}
+});
 
 Route::get("/get/{flag}", function (Request &$request, Response &$response, GenericCollection &$arguments) {
     //generate the response
@@ -42,7 +42,7 @@ Route::get("/get/{flag}", function (Request &$request, Response &$response, Gene
 	
 	//send the response to the client
     $this->Response->setSerializedBody($result);
-}
+});
 
 Route::get(Route::NOT_FOUND, function (Request &$request, Response &$response, GenericCollection &$arguments) {
     //empty response body
