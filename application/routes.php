@@ -46,7 +46,7 @@ Route::get("/look/{flag}", function (Request &$request, Response &$response, Gen
 		"status" 	=> "unknown"
 		]);
 	
-	$flags = json_decode(file_get_contents("flags.json"));
+	$flags = json_decode(file_get_contents("flags.json"), true);
 	$result["status"] = (array_key_exists($arguments['flag'], $flags))? 
 		"".$flags[$arguments['flag']] : "unknown";
 	
