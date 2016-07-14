@@ -12,29 +12,34 @@ use Gishiki\HttpKernel\Response;
 use Gishiki\Algorithms\Collections\GenericCollection;
 use Gishiki\Algorithms\Collections\SerializableCollection;
 
-Route::get("/set/{flag}", function (Request &$request, Response &$response, GenericCollection &$arguments) {
-    //generate the response
+Route::post("/set/{flag}", function (Request &$request, Response &$response, GenericCollection &$arguments) {
+    //get the request data
+    $data = $request->getDeserializedBody();
+	
+	//generate the response
 	$result = new SerializableCollection([
 		"name" 		=> $arguments['flag'],
 		"status" 	=> "set"
 		]);
 	
 	//send the response to the client
-    $this->Response->setSerializedBody($result);
+    $response->setSerializedBody($result);
 });
 
-Route::get("/clear/{flag}", function (Request &$request, Response &$response, GenericCollection &$arguments) {
-    //generate the response
+Route::post("/clear/{flag}", function (Request &$request, Response &$response, GenericCollection &$arguments) {
+    $data = $request->getDeserializedBody();
+	
+	//generate the response
 	$result = new SerializableCollection([
 		"name" 		=> $arguments['flag'],
 		"status" 	=> "clear"
 		]);
 	
 	//send the response to the client
-    $this->Response->setSerializedBody($result);
+    $response->setSerializedBody($result);
 });
 
-Route::get("/get/{flag}", function (Request &$request, Response &$response, GenericCollection &$arguments) {
+Route::get("/look/{flag}", function (Request &$request, Response &$response, GenericCollection &$arguments) {
     //generate the response
 	$result = new SerializableCollection([
 		"name" 		=> $arguments['flag'],
@@ -42,7 +47,7 @@ Route::get("/get/{flag}", function (Request &$request, Response &$response, Gene
 		]);
 	
 	//send the response to the client
-    $this->Response->setSerializedBody($result);
+    $response->setSerializedBody($result);
 });
 
 Route::get(Route::NOT_FOUND, function (Request &$request, Response &$response, GenericCollection &$arguments) {
