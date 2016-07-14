@@ -10,6 +10,7 @@ use Gishiki\Core\Route;
 use Gishiki\HttpKernel\Request;
 use Gishiki\HttpKernel\Response;
 use Gishiki\Algorithms\Collections\GenericCollection;
+use Gishiki\Algorithms\Collections\SerializableCollection;
 
 Route::get("/set/{flag}", function (Request &$request, Response &$response, GenericCollection &$arguments) {
     //generate the response
