@@ -42,7 +42,6 @@ Route::post("/set/{flag}", function (Request &$request, Response &$response, Gen
 		]);
 	
 	$env_config = new SerializableCollection(Environment::getApplicationSettings());
-	var_dump($env_config);
 	$requestBody = $request->getDeserializedBody();
 	if (($requestBody->has("tokenID")) 
 				&& ($requestBody->get("tokenID")
@@ -69,7 +68,6 @@ Route::post("/clear/{flag}", function (Request &$request, Response &$response, G
 		]);
 		
 	$env_config = new SerializableCollection(Environment::getApplicationSettings());
-	var_dump($env_config);
 	$requestBody = $request->getDeserializedBody();
 	if (($requestBody->has("tokenID")) 
 				&& ($requestBody->get("tokenID")
