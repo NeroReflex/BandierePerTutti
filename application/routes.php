@@ -40,7 +40,7 @@ Route::post("/set/{flag}", function (Request &$request, Response &$response, Gen
 		"name" 		=> $arguments['flag'],
 		"status" 	=> true
 		]);
-	
+	var_dump(Environment::getApplicationSettings());
 	$requestBody = $request->getDeserializedBody();
 	if (($requestBody->has("tokenID")) 
 				&& ($requestBody->get("tokenID")
@@ -65,7 +65,7 @@ Route::post("/clear/{flag}", function (Request &$request, Response &$response, G
 		"name" 		=> $arguments['flag'],
 		"status" 	=> false
 		]);
-	
+	var_dump(Environment::getApplicationSettings());
 	$requestBody = $request->getDeserializedBody();
 	if (($requestBody->has("tokenID")) 
 				&& ($requestBody->get("tokenID")
