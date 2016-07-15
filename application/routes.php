@@ -40,11 +40,13 @@ Route::post("/set/{flag}", function (Request &$request, Response &$response, Gen
 		"name" 		=> $arguments['flag'],
 		"status" 	=> true
 		]);
-	var_dump(Environment::getApplicationSettings());
+	
+	$env_config = new SerializableCollection(Environment::getApplicationSettings());
+	var_dump($env_config);
 	$requestBody = $request->getDeserializedBody();
 	if (($requestBody->has("tokenID")) 
 				&& ($requestBody->get("tokenID")
-					== Environment::getApplicationSettings()["tokenID"])) {
+					== $env_config->get("tokenID"))) {
 		$flags = json_decode(file_get_contents("flags.json"), true);
 		$flags[$arguments['flag']] = true;
 		$flags = file_put_contents("flags.json", json_encode($flags, JSON_PARTIAL_OUTPUT_ON_ERROR));
@@ -65,11 +67,13 @@ Route::post("/clear/{flag}", function (Request &$request, Response &$response, G
 		"name" 		=> $arguments['flag'],
 		"status" 	=> false
 		]);
-	var_dump(Environment::getApplicationSettings());
+		
+	$env_config = new SerializableCollection(Environment::getApplicationSettings());
+	var_dump($env_config);
 	$requestBody = $request->getDeserializedBody();
 	if (($requestBody->has("tokenID")) 
 				&& ($requestBody->get("tokenID")
-					== Environment::getApplicationSettings()["tokenID"])) {
+					== $env_config->get("tokenID"))) {
 		$flags = json_decode(file_get_contents("flags.json"), true);
 		$flags[$arguments['flag']] = false;
 		$flags = file_put_contents("flags.json", json_encode($flags, JSON_PARTIAL_OUTPUT_ON_ERROR));
