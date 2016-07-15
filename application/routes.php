@@ -41,7 +41,8 @@ Route::post("/set/{flag}", function (Request &$request, Response &$response, Gen
 		"status" 	=> true
 		]);
 	
-	if ($request->getDeserializedBody()["tokenID"] == Environment::GetCurrentEnvironment()["tokenID"]) {
+	$requestBody = $request->getDeserializedBody();
+	if ((requestBody->has("tokenID")) && ($requestBody["tokenID"] == Environment::GetCurrentEnvironment()["tokenID"])) {
 		$flags = json_decode(file_get_contents("flags.json"), true);
 		$flags[$arguments['flag']] = true;
 		$flags = file_put_contents("flags.json", json_encode($flags, JSON_PARTIAL_OUTPUT_ON_ERROR));
@@ -63,7 +64,8 @@ Route::post("/clear/{flag}", function (Request &$request, Response &$response, G
 		"status" 	=> false
 		]);
 	
-	if ($request->getDeserializedBody()["tokenID"] == Environment::GetCurrentEnvironment()["tokenID"]) {
+	$requestBody = $request->getDeserializedBody();
+	if ((requestBody->has("tokenID")) && ($requestBody["tokenID"] == Environment::GetCurrentEnvironment()["tokenID"]))	{
 		$flags = json_decode(file_get_contents("flags.json"), true);
 		$flags[$arguments['flag']] = false;
 		$flags = file_put_contents("flags.json", json_encode($flags, JSON_PARTIAL_OUTPUT_ON_ERROR));
