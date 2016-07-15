@@ -38,12 +38,12 @@ Route::post("/set/{flag}", function (Request &$request, Response &$response, Gen
 	//generate the response
 	$result = new SerializableCollection([
 		"name" 		=> $arguments['flag'],
-		"status" 	=> "set"
+		"status" 	=> true
 		]);
 	
 	if ($request->getDeserializedBody()["tokenID"] == Environment::GetCurrentEnvironment()["tokenID"]) {
 		$flags = json_decode(file_get_contents("flags.json"), true);
-		$flags[$arguments['flag']] = "set";
+		$flags[$arguments['flag']] = true;
 		$flags = file_put_contents("flags.json", json_encode($flags, JSON_PARTIAL_OUTPUT_ON_ERROR));
 	} else {
 		$result["status"] = "untouched";
@@ -60,12 +60,12 @@ Route::post("/clear/{flag}", function (Request &$request, Response &$response, G
 	//generate the response
 	$result = new SerializableCollection([
 		"name" 		=> $arguments['flag'],
-		"status" 	=> "clear"
+		"status" 	=> false
 		]);
 	
 	if ($request->getDeserializedBody()["tokenID"] == Environment::GetCurrentEnvironment()["tokenID"]) {
 		$flags = json_decode(file_get_contents("flags.json"), true);
-		$flags[$arguments['flag']] = "clear";
+		$flags[$arguments['flag']] = false;
 		$flags = file_put_contents("flags.json", json_encode($flags, JSON_PARTIAL_OUTPUT_ON_ERROR));
 	} else {
 		$result["status"] = "untouched";
@@ -84,8 +84,8 @@ Route::get("/look/{flag}", function (Request &$request, Response &$response, Gen
 		]);
 	
 	$flags = json_decode(file_get_contents("flags.json"), true);
-	$result["status"] = (array_key_exists($arguments['flag'], $flags))? 
-		"".$flags[$arguments['flag']] : "unknown";
+	if (array_key_exists($arguments['flag'], $flags))
+		$result["status"] = $flags[$arguments['flag']];
 	
 	//send the response to the client
     $response->setSerializedBody($result);
