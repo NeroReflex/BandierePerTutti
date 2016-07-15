@@ -46,8 +46,8 @@ Route::post("/set/{flag}", function (Request &$request, Response &$response, Gen
 		$flags[$arguments['flag']] = "set";
 		$flags = file_put_contents("flags.json", json_encode($flags, JSON_PARTIAL_OUTPUT_ON_ERROR));
 	} else {
-		$result["status"] => "untouched";
-		$result["error"] =>  "bad TokenID";
+		$result["status"] = "untouched";
+		$result["error"] =  "bad TokenID";
 	}
 	
 	//send the response to the client
@@ -59,8 +59,8 @@ Route::post("/clear/{flag}", function (Request &$request, Response &$response, G
 	
 	//generate the response
 	$result = new SerializableCollection([
-		"name" 		=> $arguments['flag'],
-		"status" 	=> "clear"
+		"name" 		= $arguments['flag'],
+		"status" 	= "clear"
 		]);
 	
 	if ($request->getDeserializedBody()["tokenID"] == Environment::GetCurrentEnvironment()["tokenID"]) {
