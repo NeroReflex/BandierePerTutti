@@ -7,7 +7,7 @@
     "security": {
         "serverPassword": "{{@SYMMETRIC_KEY}}",
         "serverKey": "{{@ASYMMETRIC_KEY}}"
-	},
-	
-	"tokenID": "{{@TOKEN_ID}}"
+    },
+    
+    "tokenID": "{{@TOKEN_ID}}"
 }
