@@ -9,5 +9,17 @@
         "serverKey": "{{@ASYMMETRIC_KEY}}"
     },
     
+    "connections": [
+        {
+            "name": "default",
+            "query": "{{@MONGODB_URI}}"
+        }
+    ],
+
+    "pipeline": {
+        "connection": "default",
+        "collection": "heroku_dsgk2lq0.pipeline"
+    },
+    
     "tokenID": "{{@TOKEN_ID}}"
 }
