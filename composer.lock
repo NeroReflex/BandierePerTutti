@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/NeroReflex/Gishiki.git",
-                "reference": "b8f78c4819f62890e788cc9f0f38d66a41fe3b65"
+                "reference": "e60c1c6ce4f2982604aa6a0d6dad4f003624b138"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NeroReflex/Gishiki/zipball/b8f78c4819f62890e788cc9f0f38d66a41fe3b65",
-                "reference": "b8f78c4819f62890e788cc9f0f38d66a41fe3b65",
+                "url": "https://api.github.com/repos/NeroReflex/Gishiki/zipball/e60c1c6ce4f2982604aa6a0d6dad4f003624b138",
+                "reference": "e60c1c6ce4f2982604aa6a0d6dad4f003624b138",
                 "shasum": ""
             },
             "require": {
@@ -113,7 +113,10 @@
             "autoload": {
                 "psr-4": {
                     "Gishiki\\": "Gishiki/"
-                }
+                },
+                "files": [
+                    "Gishiki/frameworkSetup.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -127,20 +130,20 @@
                 }
             ],
             "description": "Gishiki is a modern, fast and secure MVC framework perfect when creating a website or a web service.",
-            "time": "2016-08-03 22:31:05"
+            "time": "2016-08-09 10:47:35"
         },
         {
             "name": "psr/http-message",
-            "version": "1.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
-                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298"
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
-                "reference": "85d63699f0dbedb190bbd4b0d2b9dc707ea4c298",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
                 "shasum": ""
             },
             "require": {
@@ -168,6 +171,7 @@
                 }
             ],
             "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
             "keywords": [
                 "http",
                 "http-message",
@@ -176,7 +180,7 @@
                 "request",
                 "response"
             ],
-            "time": "2015-05-04 20:22:00"
+            "time": "2016-08-06 14:39:51"
         },
         {
             "name": "psr/log",
