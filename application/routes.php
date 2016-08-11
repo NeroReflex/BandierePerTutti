@@ -35,77 +35,81 @@ Route::post("/set/{flag}", function (Request &$request, Response &$response, Gen
     //get the request data
     $data = $request->getDeserializedBody();
 	
-	//generate the response
-	$result = new SerializableCollection([
-		"name" 		=> $arguments['flag'],
-		"status" 	=> true
-		]);
+    //generate the response
+    $result = new SerializableCollection([
+        "name" 		=> $arguments['flag'],
+	"status" 	=> true
+    ]);
 	
-	$env_config = new SerializableCollection(Environment::getApplicationSettings());
-	$requestBody = $request->getDeserializedBody();
-	if (($requestBody->has("tokenID")) 
-				&& ($requestBody->get("tokenID")
-					== $env_config->get("tokenID"))) {
-            $pipeline = Gishiki\Pipeline\PipelineCollector::getPipelineByName('changeFlagStatus');
-            $typeChanger = new Gishiki\Pipeline\PipelineRuntime($pipeline,
-                    Gishiki\Pipeline\RuntimeType::SYNCHRONOUS,
-                    Gishiki\Pipeline\RuntimePriority::URGENT, [
+    $env_config = new SerializableCollection(Environment::getApplicationSettings());
+    $requestBody = $request->getDeserializedBody();
+    if (($requestBody->has("tokenID")) 
+        && ($requestBody->get("tokenID")
+            == $env_config->get("tokenID"))) {
+        $pipeline = Gishiki\Pipeline\PipelineCollector::getPipelineByName('changeFlagStatus');
+        $typeChanger = new Gishiki\Pipeline\PipelineRuntime($pipeline,
+            Gishiki\Pipeline\RuntimeType::SYNCHRONOUS,
+            Gishiki\Pipeline\RuntimePriority::URGENT, [
                 'flag'      => $arguments['flag'],
                 'status'    => true
-            ]);
-            $typeChanger();
-	} else {
-            $result["status"] = "untouched";
-            $result["error"] =  "bad TokenID";
-	}
+        ]);
+        $typeChanger();
+        
+        $result["action"] = "changed";
+    } else {
+        $result["action"] = "untouched";
+        $result["error"] =  "bad TokenID";
+    }
 	
-	//send the response to the client
+    //send the response to the client
     $response->setSerializedBody($result);
 });
 
 Route::post("/clear/{flag}", function (Request &$request, Response &$response, GenericCollection &$arguments) {
     $data = $request->getDeserializedBody();
 	
-	//generate the response
-	$result = new SerializableCollection([
-		"name" 		=> $arguments['flag'],
-		"status" 	=> false
-		]);
+    //generate the response
+    $result = new SerializableCollection([
+        "name" 		=> $arguments['flag'],
+        "status" 	=> false
+    ]);
 		
-	$env_config = new SerializableCollection(Environment::getApplicationSettings());
-	$requestBody = $request->getDeserializedBody();
-	if (($requestBody->has("tokenID")) 
-				&& ($requestBody->get("tokenID")
-					== $env_config->get("tokenID"))) {
-            $pipeline = Gishiki\Pipeline\PipelineCollector::getPipelineByName('changeFlagStatus');
-            $typeChanger = new Gishiki\Pipeline\PipelineRuntime($pipeline,
-                    Gishiki\Pipeline\RuntimeType::SYNCHRONOUS,
-                    Gishiki\Pipeline\RuntimePriority::URGENT, [
-                'flag'      => $arguments['flag'],
-                'status'    => false
-            ]);
-            $typeChanger();
-	} else {
-		$result["status"] = "untouched";
-		$result["error"] =  "bad TokenID";
-	}
+    $env_config = new SerializableCollection(Environment::getApplicationSettings());
+    $requestBody = $request->getDeserializedBody();
+    if (($requestBody->has("tokenID")) 
+	&& ($requestBody->get("tokenID")
+            == $env_config->get("tokenID"))) {
+        $pipeline = Gishiki\Pipeline\PipelineCollector::getPipelineByName('changeFlagStatus');
+        $typeChanger = new Gishiki\Pipeline\PipelineRuntime($pipeline,
+                Gishiki\Pipeline\RuntimeType::SYNCHRONOUS,
+                Gishiki\Pipeline\RuntimePriority::URGENT, [
+            'flag'      => $arguments['flag'],
+            'status'    => false
+        ]);
+        $typeChanger();
+           
+        $result["action"] = "changed";
+    } else {
+        $result["action"] = "untouched";
+        $result["error"] =  "bad TokenID";
+    }
 	
-	//send the response to the client
+    //send the response to the client
     $response->setSerializedBody($result);
 });
 
 Route::get("/look/{flag}", function (Request &$request, Response &$response, GenericCollection &$arguments) {
     //generate the response
-	$result = new SerializableCollection([
-		"name" 		=> $arguments['flag'],
-		"status" 	=> "unknown"
-		]);
+    $result = new SerializableCollection([
+        "name" 		=> $arguments['flag'],
+        "status" 	=> "unknown"
+    ]);
 	
-	$flags = json_decode(file_get_contents("flags.json"), true);
-	if (array_key_exists($arguments['flag'], $flags))
-		$result["status"] = $flags[$arguments['flag']];
+    $flags = json_decode(file_get_contents("flags.json"), true);
+    if (array_key_exists($arguments['flag'], $flags))
+        $result["status"] = $flags[$arguments['flag']];
 	
-	//send the response to the client
+    //send the response to the client
     $response->setSerializedBody($result);
 });
 
