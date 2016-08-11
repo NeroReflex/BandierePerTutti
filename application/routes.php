@@ -46,12 +46,17 @@ Route::post("/set/{flag}", function (Request &$request, Response &$response, Gen
 	if (($requestBody->has("tokenID")) 
 				&& ($requestBody->get("tokenID")
 					== $env_config->get("tokenID"))) {
-		$flags = json_decode(file_get_contents("flags.json"), true);
-		$flags[$arguments['flag']] = true;
-		$flags = file_put_contents("flags.json", json_encode($flags, JSON_PARTIAL_OUTPUT_ON_ERROR));
+            $pipeline = Gishiki\Pipeline\PipelineCollector::getPipelineByName('changeFlagStatus');
+            $typeChanger = new Gishiki\Pipeline\PipelineRuntime($pipeline,
+                    Gishiki\Pipeline\RuntimeType::SYNCHRONOUS,
+                    Gishiki\Pipeline\RuntimePriority::URGENT, [
+                'flag'      => $arguments['flag'],
+                'status'    => true
+            ]);
+            $typeChanger();
 	} else {
-		$result["status"] = "untouched";
-		$result["error"] =  "bad TokenID";
+            $result["status"] = "untouched";
+            $result["error"] =  "bad TokenID";
 	}
 	
 	//send the response to the client
@@ -72,9 +77,14 @@ Route::post("/clear/{flag}", function (Request &$request, Response &$response, G
 	if (($requestBody->has("tokenID")) 
 				&& ($requestBody->get("tokenID")
 					== $env_config->get("tokenID"))) {
-		$flags = json_decode(file_get_contents("flags.json"), true);
-		$flags[$arguments['flag']] = false;
-		$flags = file_put_contents("flags.json", json_encode($flags, JSON_PARTIAL_OUTPUT_ON_ERROR));
+            $pipeline = Gishiki\Pipeline\PipelineCollector::getPipelineByName('changeFlagStatus');
+            $typeChanger = new Gishiki\Pipeline\PipelineRuntime($pipeline,
+                    Gishiki\Pipeline\RuntimeType::SYNCHRONOUS,
+                    Gishiki\Pipeline\RuntimePriority::URGENT, [
+                'flag'      => $arguments['flag'],
+                'status'    => false
+            ]);
+            $typeChanger();
 	} else {
 		$result["status"] = "untouched";
 		$result["error"] =  "bad TokenID";
